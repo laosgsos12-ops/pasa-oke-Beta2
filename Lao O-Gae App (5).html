@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="lo" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lao O-Gae - ແປພາສາລາວເປັນໂອເກະ (Ultra Smooth Lightweight)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans Lao', 'Phetsarath OT', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Lao & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Lao:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Default Blur Level set to 2px */
+            --glass-blur: 2px;
+            --glass-opacity-light: 0.22;
+            --glass-opacity-dark: 0.18;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans Lao', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        /* -------------------------------------------------------------
+           ULTRA LIGHTWEIGHT REAL-TIME LIQUID GLASS (GPU ACCELERATED)
+        ------------------------------------------------------------- */
+        .liquid-glass {
+            background: rgba(255, 255, 255, var(--glass-opacity-light));
+            backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.08), inset 0 1px 1.5px rgba(255, 255, 255, 0.8);
+            will-change: transform, backdrop-filter;
+            transform: translate3d(0, 0, 0);
+            transition: backdrop-filter 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .dark .liquid-glass {
+            background: rgba(15, 17, 26, var(--glass-opacity-dark));
+            backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        }
+
+        .liquid-pill {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transform: translateZ(0);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dark .liquid-pill {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Pure Glass 3D Active Pill (Super Smooth Spring Highlight) */
+        .glass-pill-3d {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.25));
+            backdrop-filter: blur(calc(var(--glass-blur) + 2px)) saturate(200%);
+            -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 2px)) saturate(200%);
+            border: 1.5px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+        }
+
+        .dark .glass-pill-3d {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08));
+            backdrop-filter: blur(calc(var(--glass-blur) + 2px)) saturate(200%);
+            -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 2px)) saturate(200%);
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.35);
+            border-radius: 9999px;
+        }
+
+        /* -------------------------------------------------------------
+           ULTRA SMOOTH LIGHTWEIGHT BUTTON & SPRING ANIMATIONS
+        ------------------------------------------------------------- */
+        .m3-btn {
+            will-change: transform;
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.25), box-shadow 0.35s ease, background-color 0.2s ease;
+            transform: translateZ(0);
+        }
+        .m3-btn:hover {
+            transform: translateY(-2px) scale(1.025) translateZ(0);
+        }
+        .m3-btn:active {
+            transform: translateY(1px) scale(0.94) translateZ(0) !important;
+            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dynamic Elastic Nav Pill Transition */
+        .fluid-pill-transition {
+            transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), width 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, width;
+            transform-origin: center left;
+        }
+
+        /* Smooth Icon Micro Bounce */
+        .nav-tab-active i {
+            transform: scale(1.2) translateY(-1px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.3);
+            filter: drop-shadow(0 2px 6px rgba(99, 102, 241, 0.35));
+        }
+
+        .nav-tab-inactive i {
+            transform: scale(1) translateY(0);
+            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* Light Fade Page Transition */
+        .page-fade-in {
+            animation: fadeInSlideLight 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            will-change: opacity, transform;
+        }
+
+        @keyframes fadeInSlideLight {
+            0% {
+                opacity: 0;
+                transform: translateY(14px) scale(0.985);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* -------------------------------------------------------------
+           LIGHTWEIGHT AMBIENT BACKGROUND BLOBS (LOW CPU USAGE)
+        ------------------------------------------------------------- */
+        @keyframes float-blob-light-1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(6deg); }
+        }
+        @keyframes float-blob-light-2 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(20px) rotate(-6deg); }
+        }
+
+        .blob-1 { 
+            animation: float-blob-light-1 14s ease-in-out infinite; 
+            will-change: transform;
+            transform: translateZ(0);
+        }
+        .blob-2 { 
+            animation: float-blob-light-2 18s ease-in-out infinite; 
+            will-change: transform;
+            transform: translateZ(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-[#070810] text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden pb-32">
+
+    <!-- Ambient Lightweight Background Blobs -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div class="blob-1 absolute top-5 left-5 w-[28rem] h-[28rem] bg-indigo-400/25 dark:bg-indigo-600/20 rounded-full blur-[80px]"></div>
+        <div class="blob-2 absolute top-1/3 -right-10 w-[26rem] h-[26rem] bg-purple-400/25 dark:bg-violet-600/15 rounded-full blur-[80px]"></div>
+        <div class="blob-1 absolute -bottom-10 left-1/3 w-[30rem] h-[30rem] bg-pink-400/20 dark:bg-cyan-600/15 rounded-full blur-[80px]"></div>
+    </div>
+
+    <!-- Top Header -->
+    <header class="pt-4 pb-2 px-4 max-w-5xl w-full mx-auto flex items-center justify-between z-10">
+        <div class="flex items-center gap-2.5 cursor-pointer m3-btn" onclick="switchTab('translator')">
+            <div class="w-9.5 h-9.5 rounded-full bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center font-bold text-sm shadow-md shadow-indigo-500/30 ring-2 ring-white/60 dark:ring-white/10">
+                ລໂ
+            </div>
+            <div>
+                <h1 class="font-bold text-base leading-none tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <span>Lao O-Gae</span>
+                    <span class="text-[9px] uppercase font-bold px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 shadow-sm" id="version-badge">v1.3</span>
+                </h1>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 font-medium mt-0.5" id="ui-subtitle">ແປພາສາລາວເປັນໂອເກະ</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <!-- Liquid Language Selector Button -->
+            <button onclick="openLangModal()" class="m3-btn text-xs liquid-pill text-slate-700 dark:text-slate-200 border-none rounded-full px-3.5 py-1.5 font-semibold flex items-center gap-1.5 focus:outline-none cursor-pointer shadow-sm">
+                <span id="current-lang-flag">🇱🇦</span>
+                <span id="current-lang-name">ລາວ</span>
+                <i class="fa-solid fa-chevron-down text-[10px] opacity-70 ml-0.5"></i>
+            </button>
+
+            <button onclick="toggleTheme()" class="m3-btn w-8.5 h-8.5 rounded-full flex items-center justify-center liquid-pill text-slate-700 dark:text-slate-200 shadow-sm" title="ປ່ຽນທີມ / Change Theme">
+                <i id="theme-icon" class="fa-solid fa-moon text-xs"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-5xl w-full mx-auto p-3 sm:p-6 space-y-4 sm:space-y-6 z-10">
+        
+        <!-- PAGE 1: TRANSLATOR (Main View) -->
+        <div id="page-translator" class="space-y-4 sm:space-y-6 page-fade-in">
+            <!-- Translation Panel Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+                
+                <!-- INPUT PANEL -->
+                <div class="liquid-glass rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 flex flex-col justify-between shadow-xl relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-50"></div>
+                    <div>
+                        <!-- Input Header -->
+                        <div class="flex items-center justify-between mb-3 text-slate-600 dark:text-slate-400">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block shadow-sm shadow-indigo-500"></span>
+                                <span class="text-xs font-bold uppercase tracking-wider" id="lbl-input-lang">ພາສາລາວ (LAO SCRIPT)</span>
+                            </div>
+                            <span id="char-count" class="text-xs text-slate-400 font-mono">0 ຕົວອັກສອນ</span>
+                        </div>
+
+                        <!-- Textarea -->
+                        <textarea 
+                            id="input-text" 
+                            rows="4" 
+                            class="w-full bg-transparent text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none resize-none text-base sm:text-lg leading-relaxed custom-scrollbar font-sans transition-colors duration-200"
+                            placeholder="ປ້ອນຂໍ້ຄວາມພາສາລາວຢູ່ທີ່ນີ້..."
+                            oninput="onInputTextChange()"
+                        ></textarea>
+                    </div>
+
+                    <!-- Input Actions -->
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-200/80 dark:border-slate-800/80 mt-3">
+                        <div class="flex items-center gap-2">
+                            <button onclick="pasteInput()" class="m3-btn text-xs px-4 py-2 rounded-full liquid-pill text-slate-700 dark:text-slate-200 font-semibold flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-regular fa-clipboard"></i>
+                                <span id="btn-paste">ວາງ</span>
+                            </button>
+                            <button onclick="clearInput()" class="m3-btn text-xs px-4 py-2 rounded-full bg-red-500/10 text-red-500 dark:text-red-400 font-semibold flex items-center gap-1.5 hover:bg-red-500/20">
+                                <i class="fa-regular fa-trash-can"></i>
+                                <span id="btn-clear">ລຶບ</span>
+                            </button>
+                        </div>
+
+                        <button onclick="speakText('input')" class="m3-btn w-9 h-9 rounded-full flex items-center justify-center liquid-pill text-slate-600 dark:text-slate-300 shadow-sm" title="ຟັງສຽງອ່ານ">
+                            <i class="fa-solid fa-volume-high text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- OUTPUT PANEL -->
+                <div class="liquid-glass rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 flex flex-col justify-between shadow-xl relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-indigo-500 opacity-50"></div>
+                    <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                    <div>
+                        <!-- Output Header -->
+                        <div class="flex items-center justify-between mb-3 text-indigo-600 dark:text-indigo-400">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block shadow-sm shadow-emerald-500"></span>
+                                <span class="text-xs font-bold uppercase tracking-wider" id="lbl-output-lang">ພາສາໂອເກະ (O-GAE PHONETICS)</span>
+                            </div>
+                            
+                            <!-- Phonetic Format Toggle -->
+                            <div class="flex items-center p-1 rounded-full liquid-pill border border-slate-200/80 dark:border-white/10 shadow-inner">
+                                <button onclick="setStyleOption('capitalize')" id="opt-cap" class="m3-btn text-[11px] px-3 py-1 rounded-full font-bold bg-indigo-600 text-white shadow-sm">Abc</button>
+                                <button onclick="setStyleOption('lowercase')" id="opt-low" class="m3-btn text-[11px] px-3 py-1 rounded-full font-bold text-slate-500 dark:text-slate-400">abc</button>
+                            </div>
+                        </div>
+
+                        <!-- Output Box -->
+                        <div id="output-container" class="w-full min-h-[140px] text-indigo-950 dark:text-indigo-100 text-base sm:text-lg font-bold leading-relaxed break-words font-sans selection:bg-indigo-200 transition-colors duration-200">
+                            <span class="text-slate-400 dark:text-slate-500 font-normal text-sm italic" id="output-placeholder">ຜົນລັບພາສາໂອເກະຈະສະແດງຢູ່ທີ່ນີ້...</span>
+                        </div>
+                    </div>
+
+                    <!-- Output Actions -->
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-200/80 dark:border-slate-800/80 mt-3">
+                        <div class="flex items-center gap-2">
+                            <button onclick="toggleFavoriteCurrent()" id="btn-fav" class="m3-btn text-xs px-4 py-2 rounded-full liquid-pill text-slate-400 font-semibold flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-regular fa-star text-xs"></i>
+                                <span id="lbl-fav">ມັກ</span>
+                            </button>
+                        </div>
+
+                        <button onclick="copyOutput()" class="m3-btn px-5.5 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-indigo-500/25">
+                            <i class="fa-regular fa-copy"></i>
+                            <span id="btn-copy">ຄັດລອກ</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Examples Capsules -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar text-xs pt-1">
+                <span class="text-slate-400 whitespace-nowrap font-semibold flex items-center gap-1 px-1">
+                    <i class="fa-solid fa-wand-magic-sparkles text-indigo-500"></i> <span id="lbl-examples">ຕົວຢ່າງ:</span>
+                </span>
+                <button onclick="setExample('ມື້ນີ້ໄປເລ່ນສວນສະຫນຸກ')" class="m3-btn px-4 py-1.5 rounded-full liquid-glass text-slate-700 dark:text-slate-300 hover:border-indigo-500 whitespace-nowrap shadow-sm font-semibold">
+                    ມື້ນີ້ໄປເລ່ນສວນສະຫນຸກ
+                </button>
+                <button onclick="setExample('ສະບາຍດີ')" class="m3-btn px-4 py-1.5 rounded-full liquid-glass text-slate-700 dark:text-slate-300 hover:border-indigo-500 whitespace-nowrap shadow-sm font-semibold">
+                    ສະບາຍດີ (Sabaidee)
+                </button>
+                <button onclick="setExample('ຂອບໃຈຫຼາຍໆ')" class="m3-btn px-4 py-1.5 rounded-full liquid-glass text-slate-700 dark:text-slate-300 hover:border-indigo-500 whitespace-nowrap shadow-sm font-semibold">
+                    ຂອບໃຈຫຼາຍໆ (Khop Chai Lai Lai)
+                </button>
+                <button onclick="setExample('ຮັກເຈົ້າ')" class="m3-btn px-4 py-1.5 rounded-full liquid-glass text-slate-700 dark:text-slate-300 hover:border-indigo-500 whitespace-nowrap shadow-sm font-semibold">
+                    ຮັກເຈົ້າ (Hak Chao)
+                </button>
+                <button onclick="setExample('ຢູ່ດີມີແຮງ')" class="m3-btn px-4 py-1.5 rounded-full liquid-glass text-slate-700 dark:text-slate-300 hover:border-indigo-500 whitespace-nowrap shadow-sm font-semibold">
+                    ຢູ່ດີມີແຮງ (Yu Dee Mee Haeng)
+                </button>
+            </div>
+
+            <!-- Safety & Privacy Alert Banner -->
+            <div class="flex justify-center pt-1">
+                <div class="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-2xl sm:rounded-full liquid-glass text-[11px] font-semibold text-slate-700 dark:text-slate-200 border border-emerald-500/35 shadow-sm text-center leading-relaxed">
+                    <span class="relative flex h-2 w-2 shrink-0">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span id="alert-banner-txt">ນະໂຍບາຍແລະຄວາມປອດໄພຂອງຜູ້ໃຊ້ງານທາງເວັບຈະບໍ່ມີການຂໍຂໍ້ມູນສ່ວນຕົວໃດໆທັງນັ້ນຫລືຮຽກເກັບເງິນໃນບັນຊີຂອງທ່ານ(ທ່ານສາມາດບໍລິຈາກຄ່າກະເຟໃຫ້ໄດ້ເລກບັນຊີໃນການຕັ້ງຄ່າ🙏🏻 ພົບປັນຫາຕິດຕໍ່ WhatsApp: 2091415737 | Email: alex889100@gmail.com</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: HISTORY -->
+        <div id="page-history" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-clock-rotate-left text-indigo-500"></i>
+                    <span id="lbl-page-history-title">ປະຫວັດການແປ</span>
+                </h2>
+                <button onclick="switchTab('translator')" class="m3-btn text-xs text-indigo-600 dark:text-indigo-400 font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-left text-xs"></i> กลับหน้าแปลภาษา
+                </button>
+            </div>
+            <div class="liquid-glass rounded-[32px] p-5 sm:p-6 shadow-xl">
+                <div class="flex items-center justify-between mb-3 px-1">
+                    <span class="text-xs text-slate-400 font-medium" id="lbl-history-desc">ລາຍການແປລ່າສຸດທີ່ບັນທຶກໄວ້ໃນເຄື່ອງ</span>
+                    <button onclick="clearHistory()" class="m3-btn text-xs text-red-500 hover:underline font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-trash"></i> <span id="btn-clear-history">ລຶບປະຫວັດທັງໝົດ</span>
+                    </button>
+                </div>
+                <div id="history-list" class="space-y-2.5 max-h-[60vh] overflow-y-auto custom-scrollbar pr-1"></div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: FAVORITES -->
+        <div id="page-favorites" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-star text-amber-500"></i>
+                    <span id="lbl-page-fav-title">ລາຍການໂປຼດ</span>
+                </h2>
+                <button onclick="switchTab('translator')" class="m3-btn text-xs text-indigo-600 dark:text-indigo-400 font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-left text-xs"></i> กลับหน้าแปลภาษา
+                </button>
+            </div>
+            <div class="liquid-glass rounded-[32px] p-5 sm:p-6 shadow-xl">
+                <div class="flex items-center justify-between mb-3 px-1">
+                    <span class="text-xs text-slate-400 font-medium" id="lbl-fav-desc">ຂໍ້ຄວາມທີ່ຕິດດາວໄວ້ເພື່ອເບິ່ງຄືນ</span>
+                </div>
+                <div id="favorites-list" class="space-y-2.5 max-h-[60vh] overflow-y-auto custom-scrollbar pr-1"></div>
+            </div>
+        </div>
+
+        <!-- PAGE 4: PHONETIC GUIDE -->
+        <div id="page-guide" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-book text-emerald-500"></i>
+                    <span id="lbl-page-guide-title">ຄູ່ມືການຖອດສຽງ</span>
+                </h2>
+                <button onclick="switchTab('translator')" class="m3-btn text-xs text-indigo-600 dark:text-indigo-400 font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-left text-xs"></i> กลับหน้าแปลภาษา
+                </button>
+            </div>
+            <div class="liquid-glass rounded-[32px] p-5 sm:p-6 shadow-xl space-y-4 text-xs text-slate-600 dark:text-slate-300">
+                <p class="leading-relaxed font-semibold text-sm" id="lbl-guide-heading">ຫຼັກເກນການຖອດພະຍັນຊະນະ ແລະ ສະຫຼະພາສາລາວເປັນຕົວອັກສອນໂຣມັນ (Lao O-Gae Romanization Standard):</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 font-mono">
+                    <div class="p-3 rounded-2xl liquid-pill hover:scale-105 transition-transform">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm block">ກ</span> k / g
+                    </div>
+                    <div class="p-3 rounded-2xl liquid-pill hover:scale-105 transition-transform">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm block">ຂ, ຄ</span> kh
+                    </div>
+                    <div class="p-3 rounded-2xl liquid-pill hover:scale-105 transition-transform">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm block">ງ</span> ng
+                    </div>
+                    <div class="p-3 rounded-2xl liquid-pill hover:scale-105 transition-transform">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm block">ຈ</span> ch
+                    </div>
+                    <div class="p-3 rounded-2xl liquid-pill hover:scale-105 transition-transform">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm block">ສ, ຊ</span> s
+                    </div>
+                    <div class="p-3 rounded-2xl liquid-pill hover:scale-105 transition-transform">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm block">ຍ, ຢ</span> y
+                    </div>
+                    <div class="p-3 rounded-2xl liquid-pill hover:scale-105 transition-transform">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm block">ດ, ຕ</span> d / t
+                    </div>
+                    <div class="p-3 rounded-2xl liquid-pill hover:scale-105 transition-transform">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm block">ບ, ປ</span> b / p
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Dock Navigation -->
+    <nav class="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 px-3 w-full max-w-md">
+        <div id="nav-dock-container" class="relative liquid-glass rounded-full p-1.5 flex items-center justify-between shadow-2xl border border-white/80 dark:border-white/20 overflow-hidden min-h-[54px]">
+            
+            <!-- 3D Liquid Glass Active Pill Highlights -->
+            <div id="nav-active-pill" class="absolute top-1.5 bottom-1.5 glass-pill-3d rounded-full fluid-pill-transition z-0"></div>
+
+            <button onclick="switchTab('translator')" id="nav-btn-translator" class="relative z-10 flex-1 py-2 px-1 text-center text-xs font-bold text-slate-900 dark:text-white flex items-center justify-center gap-1.5 nav-tab-active m3-btn border-none">
+                <i class="fa-solid fa-language text-sm"></i>
+                <span id="tab-title-translator">ແປພາສາ</span>
+            </button>
+
+            <button onclick="switchTab('history')" id="nav-btn-history" class="relative z-10 flex-1 py-2 px-1 text-center text-xs font-bold text-slate-600 dark:text-slate-300 flex items-center justify-center gap-1.5 nav-tab-inactive m3-btn border-none">
+                <i class="fa-solid fa-clock-rotate-left text-xs"></i>
+                <span id="tab-title-history">ປະຫວັດ</span>
+            </button>
+
+            <button onclick="switchTab('favorites')" id="nav-btn-favorites" class="relative z-10 flex-1 py-2 px-1 text-center text-xs font-bold text-slate-600 dark:text-slate-300 flex items-center justify-center gap-1.5 nav-tab-inactive m3-btn border-none">
+                <i class="fa-solid fa-star text-xs"></i>
+                <span id="tab-title-favorites">ລາຍການໂປຼດ</span>
+            </button>
+
+            <button onclick="switchTab('guide')" id="nav-btn-guide" class="relative z-10 flex-1 py-2 px-1 text-center text-xs font-bold text-slate-600 dark:text-slate-300 flex items-center justify-center gap-1.5 nav-tab-inactive m3-btn border-none">
+                <i class="fa-solid fa-book text-xs"></i>
+                <span id="tab-title-guide">ຄູ່ມື</span>
+            </button>
+
+            <button onclick="openSettings()" class="relative z-10 w-8.5 h-8.5 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 flex items-center justify-center shadow-md ml-0.5 m3-btn border-none">
+                <i class="fa-solid fa-sliders text-xs"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- SETTINGS MODAL -->
+    <div id="settings-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/30 dark:bg-slate-950/75 backdrop-blur-md hidden transition-all duration-300 opacity-0" onclick="if(event.target === this) closeSettings()">
+        <div class="liquid-glass rounded-[32px] max-w-md w-full max-h-[85vh] flex flex-col p-5 sm:p-6 shadow-2xl border border-white/90 dark:border-white/20 transform scale-95 transition-all duration-300" id="settings-modal-card">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200/80 dark:border-slate-800 shrink-0">
+                <h3 class="font-bold text-base flex items-center gap-2 text-slate-900 dark:text-white" id="modal-title-settings">
+                    <i class="fa-solid fa-gear text-indigo-500"></i> ຕັ້ງຄ່າລະບົບ
+                </h3>
+                <button onclick="closeSettings()" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800 m3-btn">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto custom-scrollbar py-3 space-y-4 text-sm pr-1">
+                <!-- Theme Option -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-slate-800 dark:text-slate-200" id="setting-theme-lbl">ທີມສະແດງຜົນ</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400" id="setting-theme-desc">ປັບປ່ຽນສີໜ້າຈໍແອັບ</p>
+                    </div>
+                    <div class="flex items-center p-1 rounded-full liquid-pill border border-slate-200/80 dark:border-white/10">
+                        <button onclick="applyTheme('light')" id="theme-btn-light" class="m3-btn text-[11px] px-2.5 py-1 rounded-full font-bold">☀️ Light</button>
+                        <button onclick="applyTheme('dark')" id="theme-btn-dark" class="m3-btn text-[11px] px-2.5 py-1 rounded-full font-bold">🌙 Dark</button>
+                        <button onclick="applyTheme('system')" id="theme-btn-system" class="m3-btn text-[11px] px-2.5 py-1 rounded-full font-bold">📱 Auto</button>
+                    </div>
+                </div>
+
+                <!-- Glass Blur Option (Default 2px) -->
+                <div class="space-y-1.5 pt-2.5 border-t border-slate-200/80 dark:border-slate-800/80">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-slate-800 dark:text-slate-200" id="setting-blur-lbl">ຄວາມເບຼີກະຈົກ (Glass Blur)</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400" id="setting-blur-desc">ປັບຄວາມເບຼີແບບ Liquid Glass</p>
+                        </div>
+                        <span id="blur-val-txt" class="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400">2px</span>
+                    </div>
+                    <input 
+                        type="range" 
+                        min="0" 
+                        max="30" 
+                        step="1" 
+                        id="glass-blur-range"
+                        oninput="onGlassBlurChange(this.value)"
+                        class="w-full accent-indigo-600 cursor-pointer"
+                    >
+                </div>
+
+                <!-- Glass Opacity Option -->
+                <div class="space-y-1.5 pt-2.5 border-t border-slate-200/80 dark:border-slate-800/80">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-slate-800 dark:text-slate-200" id="setting-opacity-lbl">ຄວາມໂປ່ງໃສຂອງກະຈົກ (Opacity)</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400" id="setting-opacity-desc">ປັບຄວາມໂປ່ງໃສໃຫ້ເຫັນພື້ນຫຼັງ</p>
+                        </div>
+                        <span id="opacity-val-txt" class="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400">22%</span>
+                    </div>
+                    <input 
+                        type="range" 
+                        min="10" 
+                        max="90" 
+                        step="5" 
+                        id="glass-opacity-range"
+                        oninput="onGlassOpacityChange(this.value)"
+                        class="w-full accent-indigo-600 cursor-pointer"
+                    >
+                </div>
+
+                <!-- Word Spacing Option -->
+                <div class="flex items-center justify-between pt-2.5 border-t border-slate-200/80 dark:border-slate-800/80">
+                    <div>
+                        <p class="font-bold text-slate-800 dark:text-slate-200" id="setting-space-lbl">ຮູບແບບການເວັ້ນພະຍາງ</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400" id="setting-space-desc">ການໃສ່ຊ່ອງຫວ່າງລະຫວ່າງພະຍາງ</p>
+                    </div>
+                    <div class="flex items-center p-1 rounded-full liquid-pill border border-slate-200/80 dark:border-white/10">
+                        <button onclick="applySpacingSetting('space')" id="spc-btn-space" class="m3-btn text-[10px] px-2 py-1 rounded-full font-bold">Space</button>
+                        <button onclick="applySpacingSetting('hyphen')" id="spc-btn-hyphen" class="m3-btn text-[10px] px-2 py-1 rounded-full font-bold">-</button>
+                        <button onclick="applySpacingSetting('join')" id="spc-btn-join" class="m3-btn text-[10px] px-2 py-1 rounded-full font-bold">Join</button>
+                    </div>
+                </div>
+
+                <!-- Privacy Policy Box -->
+                <div class="p-3.5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/25 text-xs space-y-1">
+                    <p class="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5" id="lbl-privacy-title">
+                        <i class="fa-solid fa-shield-halved"></i> ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ (Privacy Policy)
+                    </p>
+                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-[11px]" id="lbl-privacy-desc">
+                        ເວັບໄຊນີ້ບໍ່ມີການເກັບຮັກສາ ຫຼື ຮ້ອງຂໍຂໍ້ມູນສ່ວນຕົວໃດໆ ຂອງຜູ້ໃຊ້ງານຢ່າງເດັດຂາດ (No Personal Data Collected).
+                    </p>
+                </div>
+
+                <!-- Donate Box -->
+                <div class="p-3.5 rounded-2xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/25 text-xs space-y-2">
+                    <div class="flex items-center justify-between">
+                        <p class="font-bold text-amber-700 dark:text-amber-400 flex items-center gap-1.5" id="lbl-donate-title">
+                            <i class="fa-solid fa-heart text-red-500"></i> ສະໜັບສະໜູນຜູ້ພັດທະນາ (Donate)
+                        </p>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-300" id="lbl-donate-bank">BCEL</span>
+                    </div>
+                    <div class="liquid-pill p-2.5 rounded-xl space-y-1 border border-amber-500/20 bg-white/70 dark:bg-white/10">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] text-slate-600 dark:text-slate-400" id="lbl-donate-name-title">ຊື່ບັນຊີ:</span>
+                            <span class="font-bold text-slate-900 dark:text-slate-100 font-mono">ALEX XAYYASENG</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-1 border-t border-slate-200/60 dark:border-slate-800/60">
+                            <span class="text-[11px] text-slate-600 dark:text-slate-400" id="lbl-donate-acc-title">ເລກບັນຊີ:</span>
+                            <span class="font-bold text-indigo-600 dark:text-indigo-400 font-mono tracking-wider text-xs">0451251538943</span>
+                        </div>
+                    </div>
+                    <button onclick="copyDonateAccount()" class="w-full m3-btn py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-amber-500/20">
+                        <i class="fa-regular fa-copy"></i>
+                        <span id="btn-copy-acc">ຄັດລອກເລກບັນຊີ</span>
+                    </button>
+                </div>
+
+                <!-- Contact Support Box -->
+                <div class="p-3.5 rounded-2xl liquid-pill text-xs space-y-2 border border-white/60 dark:border-white/10">
+                    <p class="font-bold text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5" id="lbl-contact-title">
+                        <i class="fa-solid fa-headset"></i> ຕິດຕໍ່ທີມງານ & ແຈ້ງບັນຫາ (Contact Support)
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <a href="https://wa.me/8562091415737" target="_blank" class="m3-btn px-3 py-1.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 font-bold flex items-center gap-1.5 hover:bg-emerald-500/25">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp: 2091415737
+                        </a>
+                        <a href="mailto:alex889100@gmail.com" class="m3-btn px-3 py-1.5 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 font-bold flex items-center gap-1.5 hover:bg-indigo-500/25">
+                            <i class="fa-regular fa-envelope text-sm"></i> alex889100@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="p-2.5 rounded-xl bg-indigo-500/10 dark:bg-indigo-500/15 border border-indigo-500/20 flex items-start gap-2 text-[11px] text-slate-700 dark:text-slate-300">
+                        <i class="fa-solid fa-location-dot text-indigo-500 mt-0.5 shrink-0"></i>
+                        <div>
+                            <span class="font-bold text-indigo-700 dark:text-indigo-400" id="lbl-address-title">ທີ່ຢູ່:</span>
+                            <span id="lbl-address-desc">ແຂວງຈຳປາສັກ, ເມືອງປະທຸມພອນ, ບ້ານບັງລຽງ</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400 font-mono">
+                        <span id="lbl-app-version">ເວີຊັນ: 1.3</span>
+                        <span id="lbl-app-updated">ອັບເດດລ່າສຸດ: 9/11/2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-200/80 dark:border-slate-800 shrink-0 flex justify-end">
+                <button onclick="closeSettings()" class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold text-xs shadow-lg shadow-indigo-500/25 m3-btn" id="btn-modal-ok">
+                    ຕົກລົງ / OK
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LANGUAGE MODAL -->
+    <div id="lang-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/30 dark:bg-slate-950/75 backdrop-blur-md hidden transition-all duration-300 opacity-0" onclick="if(event.target === this) closeLangModal()">
+        <div class="liquid-glass rounded-[32px] max-w-sm w-full p-5 shadow-2xl space-y-4 border border-white/90 dark:border-white/20 transform scale-95 transition-all duration-300" id="lang-modal-card">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-slate-800">
+                <h3 class="font-bold text-base flex items-center gap-2 text-slate-900 dark:text-white" id="modal-lang-title">
+                    <i class="fa-solid fa-globe text-indigo-500"></i> ເລືອກພາສາ / Select Language
+                </h3>
+                <button onclick="closeLangModal()" class="w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800 m3-btn">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <div class="space-y-1.5 max-h-72 overflow-y-auto custom-scrollbar pr-1" id="lang-option-list"></div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 liquid-glass text-slate-900 dark:text-white text-xs px-5 py-3 rounded-full shadow-2xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 z-50 border border-indigo-500/30 transform translate-y-3">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+        <span id="toast-msg" class="font-bold">ຄັດລອກຂໍ້ຄວາມແລ້ວ!</span>
+    </div>
+
+    <!-- SINGLE STABLE JS CONTROLLER -->
+    <script>
+        const LAO_DICTIONARY = {
+            "ມື້ນີ້ໂຄດມ່ວນເລີຍໄປເລ່ນສວນສະຫນຸກ": "Mue Nee Khot Muan Loei Pai Len Suan Sa Nook",
+            "ມື້ນີ້ໂຄດມ່ວນເລີຍໄປເລ່ນສວນສະໜຸກ": "Mue Nee Khot Muan Loei Pai Len Suan Sa Nook",
+            "ມື້ນີ້ໄປເລ່ນສວນສະຫນຸກ": "Mue Nee Pai Len Suan Sa Nook",
+            "ມື້ນີ້ໄປເລ່ນສວນສະໜຸກ": "Mue Nee Pai Len Suan Sa Nook",
+            "ມື້ນີ້ໂຄດມ່ວນເລີຍ": "Mue Nee Khot Muan Loei",
+            "ສວນສະຫນຸກ": "Suan Sa Nook",
+            "ສວນສະໜຸກ": "Suan Sa Nook",
+            "ສະຫນຸກສະຫນານ": "Sa Nook Sa Nhan",
+            "ສະໜຸກສະໜານ": "Sa Nook Sa Nhan",
+            "ສະຫນຸກ": "Sa Nook",
+            "ສະໜຸກ": "Sa Nook",
+            "ມື້ນີ້": "Mue Nee",
+            "ໂຄດ": "Khot",
+            "ມ່ວນ": "Muan",
+            "ເລີຍ": "Loei",
+            "ໄປ": "Pai",
+            "ເລ່ນ": "Len",
+            "ຫຼິ້ນ": "Lin",
+            "ຫລິ້ນ": "Lin",
+            "ສວນ": "Suan",
+            "ສະບາຍດີ": "Sabaidee",
+            "ສະບາຍດີບໍ": "Sabaidee Bor",
+            "ຂອບໃຈ": "Khop Chai",
+            "ຂອບໃຈຫຼາຍໆ": "Khop Chai Lai Lai",
+            "ຂໍໂທດ": "Kho Thot",
+            "ຮັກ": "Hak",
+            "ເຈົ້າ": "Chao",
+            "ຂ້ອຍ": "Khoy",
+            "ບໍ່": "Bor",
+            "ແມ່ນ": "Maen",
+            "ບໍ່ແມ່ນ": "Bor Maen",
+            "ໄດ້": "Dai",
+            "ບໍ່ໄດ້": "Bor Dai",
+            "ຢູ່ດີມີແຮງ": "Yu Dee Mee Haeng",
+            "ໂຊກດີ": "Sok Dee",
+            "ຝັນດີ": "Fan Dee",
+            "ຍິນດີຕ້ອນຮັບ": "Yin Dee Ton Hap",
+            "ເປັນແນວໃດ": "Pen Naew Dai",
+            "ໄປໃສ": "Pai Sai",
+            "ກິນຂ້າວ": "Kin Khao",
+            "ກິນນ້ຳ": "Kin Nam",
+            "ນ້ຳ": "Nam",
+            "ແຊບ": "Saep",
+            "ແຊບຫຼາຍ": "Saep Lai",
+            "ຫຼາຍ": "Lai",
+            "ອີ່ຫຼີ": "Ee Lee",
+            "ແມ່ນແລ້ວ": "Maen Laew",
+            "ແລ້ວ": "Laew",
+            "ຫຼວງພະບາງ": "Luang Prabang",
+            "ວຽງຈັນ": "Viang Chan",
+            "ຈຳປາສັກ": "Champasak",
+            "ປະເທດລາວ": "Pa Thet Lao",
+            "ພາສາລາວ": "Pha Sa Lao",
+            "ຄົນລາວ": "Khon Lao",
+            "ເຮືອນ": "Huan",
+            "ໂໂຮງຮຽນ": "Hong Hian",
+            "ໂຮງໝໍ": "Hong Mor",
+            "ຕະຫຼາດ": "Ta Lat",
+            "ຮ້ານອາຫານ": "Han A Han",
+            "ເບຍລາວ": "Beer Lao",
+            "ກາເຟ": "Ka Fe",
+            "ຊາ": "Sa",
+            "ຫມູ່": "Moo",
+            "ເພື່ອນ": "Phuan",
+            "ອ້າຍ": "Ai",
+            "ເອື້ອຍ": "Euay",
+            "ນ້ອງ": "Nong",
+            "ພໍ່": "Pho",
+            "ແມ່": "Mae",
+            "ລູກ": "Look",
+            "ປ້າ": "Pa",
+            "ລຸງ": "Lung",
+            "ອາວ": "Ao",
+            "ອາ": "A",
+            "ເຖົ້າ": "Thao",
+            "ງາມ": "Ngam",
+            "ງາມຫຼາຍ": "Ngam Lai",
+            "ໜ້າຮັກ": "Na Hak",
+            "ຄິດຮອດ": "Khit Hot",
+            "ຄິດເຖິງ": "Khit Thoeng",
+            "ລາກ່ອນ": "La Kon",
+            "ພົບກັນໃໝ່": "Phop Kan Mai",
+            "ຮັກເຈົ້າ": "Hak Chao",
+            "ກິນຂ້າວແລ້ວບໍ": "Kin Khao Laew Bor",
+            "ເຮັດຫຍັງ": "Het Yang",
+            "ບໍ່ເປັນຫຍັງ": "Bor Pen Yang",
+            "ອັນໃດ": "An Dai",
+            "ເທົ່າໃດ": "Thao Dai",
+            "ຢູ່ໃສ": "Yu Sai",
+            "ງາມແທ້": "Ngam Thae",
+            "ສະບາຍ": "Sa Bai",
+            "ໂຊກດີເດີ": "Sok Dee Doe",
+            "ໄປກ່ອນເດີ": "Pai Kon Doe"
+        };
+
+        const LAO_CONSONANT_MAP = {
+            'ກ': 'k', 'ຂ': 'kh', 'ຄ': 'kh', 'ງ': 'ng', 'ຈ': 'ch', 'ສ': 's', 'ຊ': 's',
+            'ຍ': 'y', 'ດ': 'd', 'ຕ': 't', 'ຖ': 'th', 'ທ': 'th', 'ນ': 'n', 'ບ': 'b',
+            'ປ': 'p', 'ຜ': 'ph', 'ຝ': 'f', 'ພ': 'ph', 'ຟ': 'f', 'ມ': 'm', 'ຢ': 'y',
+            'ຣ': 'r', 'ລ': 'l', 'ວ': 'v', 'ຫ': 'h', 'ອ': '', 'ຮ': 'h',
+            'ໜ': 'n', 'ໝ': 'm', 'ຫຼ': 'l'
+        };
+
+        const LAO_FINAL_CONSONANTS = {
+            'ກ': 'k', 'ຂ': 'k', 'ຄ': 'k',
+            'ດ': 't', 'ຕ': 't', 'ຖ': 't', 'ທ': 't', 'ສ': 't', 'ຊ': 't', 'ຈ': 't',
+            'ບ': 'p', 'ປ': 'p', 'ຜ': 'p', 'ພ': 'p', 'ຝ': 'p', 'ຟ': 'p',
+            'ງ': 'ng', 'ນ': 'n', 'ມ': 'm', 'ຣ': 'n', 'ລ': 'n',
+            'ຍ': 'i', 'ວ': 'w'
+        };
+
+        const LAO_COMPOUND_CONSONANTS = [
+            { lao: 'ຫນ', sound: 'n' },
+            { lao: 'ຫມ', sound: 'm' },
+            { lao: 'ຫລ', sound: 'l' },
+            { lao: 'ຫງ', sound: 'ng' },
+            { lao: 'ຫຍ', sound: 'y' },
+            { lao: 'ຫວ', sound: 'v' },
+            { lao: 'ຫຣ', sound: 'r' },
+            { lao: 'ກຼ', sound: 'kl' },
+            { lao: 'ຂຼ', sound: 'khl' },
+            { lao: 'ຄຼ', sound: 'khl' },
+            { lao: 'ປຼ', sound: 'pl' },
+            { lao: 'ພຼ', sound: 'phl' }
+        ];
+
+        const ALL_VOWEL_MARKS = ['ະ', 'າ', 'ິ', 'ີ', 'ຶ', 'ື', 'ຸ', 'ູ', 'ົ', 'ັ', 'ໍ', 'ຽ', 'ຳ', 'ໍາ'];
+        const PRE_VOWELS = ['ເ', 'ແ', 'ໂ', 'ໄ', 'ໃ'];
+
+        function isToneMark(ch) { return /[\u0EC8-\u0ECD]/.test(ch); }
+        function isLaoChar(ch) { return /[\u0E80-\u0EFF]/.test(ch); }
+
+        function transliterateLaoRules(text) {
+            if (!text) return '';
+            const dictKeys = Object.keys(LAO_DICTIONARY).sort((a, b) => b.length - a.length);
+            let resultTokens = [];
+            let i = 0;
+
+            while (i < text.length) {
+                let matchedDict = false;
+                for (let key of dictKeys) {
+                    if (text.substr(i, key.length) === key) {
+                        resultTokens.push(LAO_DICTIONARY[key]);
+                        i += key.length;
+                        matchedDict = true;
+                        break;
+                    }
+                }
+                if (matchedDict) continue;
+
+                let char = text[i];
+                if (!isLaoChar(char)) {
+                    resultTokens.push(char);
+                    i++;
+                    continue;
+                }
+                if (isToneMark(char)) {
+                    i++;
+                    continue;
+                }
+
+                let preVowel = '';
+                if (PRE_VOWELS.includes(char)) {
+                    preVowel = char;
+                    i++;
+                }
+
+                while (i < text.length && isToneMark(text[i])) i++;
+
+                let initialCons = '';
+                let compoundMatched = false;
+                let sub2 = text.substr(i, 2);
+                for (let comp of LAO_COMPOUND_CONSONANTS) {
+                    if (sub2 === comp.lao) {
+                        initialCons = comp.sound;
+                        i += 2;
+                        compoundMatched = true;
+                        break;
+                    }
+                }
+
+                if (!compoundMatched) {
+                    if (text[i] && LAO_CONSONANT_MAP[text[i]] !== undefined) {
+                        initialCons = LAO_CONSONANT_MAP[text[i]];
+                        i++;
+                    } else if (text[i] === 'ອ') {
+                        initialCons = '';
+                        i++;
+                    } else if (!preVowel) {
+                        i++;
+                        continue;
+                    }
+                }
+
+                while (i < text.length && isToneMark(text[i])) i++;
+
+                let vowelSound = '';
+                let isExplicitOpenVowel = false;
+
+                if (preVowel === 'ເ') {
+                    if (text.substr(i, 2) === 'ົາ') {
+                        vowelSound = 'ao';
+                        isExplicitOpenVowel = true;
+                        i += 2;
+                    } else if (text.substr(i, 2) === 'ືອ') {
+                        vowelSound = 'uea';
+                        i += 2;
+                    } else if (text.substr(i, 2) === 'ັຍ') {
+                        vowelSound = 'ia';
+                        i += 2;
+                    } else if (text[i] === 'ິ' || text[i] === 'ີ') {
+                        vowelSound = 'oe';
+                        i++;
+                    } else if (text[i] === 'ະ') {
+                        vowelSound = 'e';
+                        isExplicitOpenVowel = true;
+                        i++;
+                    } else {
+                        vowelSound = 'e';
+                    }
+                } else if (preVowel === 'ແ') {
+                    if (text[i] === 'ະ') {
+                        vowelSound = 'ae';
+                        isExplicitOpenVowel = true;
+                        i++;
+                    } else {
+                        vowelSound = 'ae';
+                    }
+                } else if (preVowel === 'ໂ') {
+                    if (text[i] === 'ະ') {
+                        vowelSound = 'o';
+                        isExplicitOpenVowel = true;
+                        i++;
+                    } else {
+                        vowelSound = 'o';
+                    }
+                } else if (preVowel === 'ໄ' || preVowel === 'ໃ') {
+                    vowelSound = 'ai';
+                    isExplicitOpenVowel = true;
+                } else {
+                    if (text.substr(i, 2) === 'ໍາ' || text.substr(i, 2) === 'ຳ') {
+                        vowelSound = 'am';
+                        isExplicitOpenVowel = true;
+                        i += 2;
+                    } else if (text.substr(i, 2) === 'ັຍ') {
+                        vowelSound = 'ai';
+                        isExplicitOpenVowel = true;
+                        i += 2;
+                    } else if (text.substr(i, 2) === 'ົວ' || text.substr(i, 2) === 'ັວ') {
+                        vowelSound = 'ua';
+                        i += 2;
+                    } else if (text[i] === 'ຽ') {
+                        vowelSound = 'ia';
+                        i++;
+                    } else if (text[i] === 'ິ') {
+                        vowelSound = 'i';
+                        i++;
+                    } else if (text[i] === 'ີ') {
+                        vowelSound = 'ee';
+                        i++;
+                    } else if (text[i] === 'ຶ' || text[i] === 'ື') {
+                        vowelSound = 'ue';
+                        i++;
+                    } else if (text[i] === 'ຸ') {
+                        vowelSound = 'u';
+                        i++;
+                    } else if (text[i] === 'ູ') {
+                        vowelSound = 'oo';
+                        i++;
+                    } else if (text[i] === 'ະ') {
+                        vowelSound = 'a';
+                        isExplicitOpenVowel = true;
+                        i++;
+                    } else if (text[i] === 'າ') {
+                        vowelSound = 'a';
+                        i++;
+                    } else if (text[i] === 'ໍ') {
+                        vowelSound = 'or';
+                        i++;
+                    } else if (text[i] === 'ົ') {
+                        vowelSound = 'o';
+                        i++;
+                    } else if (text[i] === 'ັ') {
+                        vowelSound = 'a';
+                        i++;
+                    } else if (text[i] === 'ວ' && (i + 1 >= text.length || LAO_FINAL_CONSONANTS[text[i + 1]] || !ALL_VOWEL_MARKS.includes(text[i + 1]))) {
+                        vowelSound = 'ua';
+                        i++;
+                    } else if (text[i] === 'ອ' && (i + 1 < text.length && LAO_FINAL_CONSONANTS[text[i + 1]] && !ALL_VOWEL_MARKS.includes(text[i + 1]))) {
+                        vowelSound = 'or';
+                        i++;
+                    } else {
+                        vowelSound = 'a';
+                    }
+                }
+
+                while (i < text.length && isToneMark(text[i])) i++;
+
+                let finalCons = '';
+                if (!isExplicitOpenVowel && i < text.length && LAO_FINAL_CONSONANTS[text[i]]) {
+                    const nextChar = text[i];
+                    const charAfterNext = text[i + 1] || '';
+                    const isNextConsOfNewSyllable = ALL_VOWEL_MARKS.includes(charAfterNext) || 
+                                                    PRE_VOWELS.includes(charAfterNext) || 
+                                                    isToneMark(charAfterNext) ||
+                                                    PRE_VOWELS.includes(nextChar);
+
+                    if (!isNextConsOfNewSyllable) {
+                        finalCons = LAO_FINAL_CONSONANTS[nextChar];
+                        if (nextChar === 'ວ') {
+                            if (vowelSound === 'a') vowelSound = 'ao';
+                            else if (vowelSound === 'ae') vowelSound = 'aew';
+                            else if (vowelSound === 'e') vowelSound = 'ew';
+                            finalCons = '';
+                        } else if (nextChar === 'ຍ') {
+                            if (vowelSound === 'a') vowelSound = 'ai';
+                            else if (vowelSound === 'o') vowelSound = 'oi';
+                            finalCons = '';
+                        }
+                        i++;
+                    }
+                }
+
+                resultTokens.push(initialCons + vowelSound + finalCons);
+            }
+
+            let rawResult = resultTokens.join(' ');
+            return rawResult.replace(/\s+/g, ' ').replace(/\s([\.\,\!\?\n])\s/g, '$1 ').trim();
+        }
+
+        const appState = {
+            theme: 'system',
+            glassBlur: 2, // Set to 2px default
+            glassOpacity: 22,
+            language: 'lo',
+            styleOption: 'capitalize',
+            spacingOption: 'space',
+            activeTab: 'translator',
+            history: [],
+            favorites: []
+        };
+
+        let historyDebounceTimer = null;
+
+        const LANGUAGES = [
+            { code: 'lo', flag: '🇱🇦', name: 'ລາວ' },
+            { code: 'th', flag: '🇹🇭', name: 'ไทย' },
+            { code: 'en', flag: '🇺🇸', name: 'English' }
+        ];
+
+        const I18N = {
+            lo: {
+                subtitle: "ແປພາສາລາວເປັນໂອເກະ",
+                inputLang: "ພາສາລາວ (LAO SCRIPT)",
+                outputLang: "ພາສາໂອເກະ (O-GAE PHONETICS)",
+                placeholderInput: "ປ້ອນຂໍ້ຄວາມພາສາລາວຢູ່ທີ່ນີ້...",
+                placeholderOutput: "ຜົນລັບພາສາໂອເກະຈະສະແດງຢູ່ທີ່ນີ້...",
+                btnPaste: "ວາງ",
+                btnClear: "ລຶບ",
+                btnFav: "ມັກ",
+                btnCopy: "ຄັດລອກ",
+                examples: "ຕົວຢ່າງ:",
+                historyTitle: "ປະຫວັດ",
+                favTitle: "ລາຍການໂປຼດ",
+                guideTitle: "ຄູ່ມື",
+                navTranslator: "ແປພາສາ",
+                historyDesc: "ລາຍການແປລ່າສຸດທີ່ບັນທຶກໄວ້ໃນເຄື່ອງ",
+                favDesc: "ຂໍ້ຄວາມທີ່ຕິດດາວໄວ້ເພື່ອເບິ່ງຄືນ",
+                clearHistory: "ລຶບປະຫວັດທັງໝົດ",
+                noHistory: "ບໍ່ມີປະຫວັດການແປ",
+                noFav: "ຍັງບໍ່ມີລາຍການໂປຼດ",
+                modalTitle: "ຕັ້ງຄ່າລະບົບ",
+                themeLbl: "ທີມສະແດງຜົນ",
+                themeDesc: "ປັບປ່ຽນສີໜ້າຈໍແອັບ",
+                blurLbl: "ຄວາມເບຼີກະຈົກ (Glass Blur)",
+                blurDesc: "ປັບຄວາມເບຼີແບບ Liquid Glass",
+                opacityLbl: "ຄວາມໂປ່ງໃສຂອງກະຈົກ (Opacity)",
+                opacityDesc: "ປັບຄວາມໂປ່ງໃສໃຫ້ເຫັນພື້ນຫຼັງ",
+                spaceLbl: "ຮູບແບບການເວັ້ນພະຍາງ",
+                spaceDesc: "ການໃສ່ຊ່ອງຫວ່າງລະຫວ່າງພະຍາງ",
+                privacyTitle: "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ (Privacy Policy)",
+                privacyDesc: "ເວັບໄຊນີ້ບໍ່ມີການເກັບຮັກສາ ຫຼື ຮ້ອງຂໍຂໍ້ມູນສ່ວນຕົວໃດໆ ຂອງຜູ້ໃຊ້ງານຢ່າງເດັດຂາດ (No Personal Data Collected).",
+                contactTitle: "ຕິດຕໍ່ທີມງານ & ແຈ້ງບັນຫາ (Contact Support)",
+                addressTitle: "ທີ່ຢູ່:",
+                addressDesc: "ແຂວງຈຳປາສັກ, ເມືອງປະທຸມພອນ, ບ້ານບັງລຽງ",
+                donateTitle: "ສະໜັບສະໜູນຜູ້ພັດທະນາ (Donate)",
+                donateBank: "ທະນາຄານການຄ້າມະຫາຊົນ (BCEL)",
+                btnCopyAcc: "ຄັດລອກເລກບັນຊີ",
+                toastCopiedAcc: "ຄັດລອກເລກບັນຊີແລ້ວ!",
+                appVersion: "ເວີຊັນ: 1.3",
+                appUpdated: "ອັບເດດລ່າສຸດ: 9/11/2026",
+                btnOk: "ຕົກລົງ / OK",
+                toastCopied: "ຄັດລອກຂໍ້ຄວາມແລ້ວ!",
+                toastCleared: "ລຶບຂໍ້ຄວາມແລ້ວ!",
+                toastPasteFallback: "ກະລຸນາກົດຄ້າງເພື່ອວາງຂໍ້ຄວາມ",
+                charUnit: "ຕົວອັກສອນ",
+                guideHeading: "ຫຼັກເກນການຖອດພະຍັນຊະນະ ແລະ ສະຫຼະພາສາລາວເປັນຕົວອັກສອນໂຣມັນ (Lao O-Gae Romanization Standard):",
+                alertBannerText: "ນະໂຍບາຍແລະຄວາມປອດໄພຂອງຜູ້ໃຊ້ງານທາງເວັບຈະບໍ່ມີການຂໍຂໍ້ມູນສ່ວນຕົວໃດໆທັງນັ້ນຫລືຮຽກເກັບເງິນໃນບັນຊີຂອງທ່ານ(ທ່ານສາມາດບໍລິຈາກຄ່າກະເຟໃຫ້ໄດ້ເລກບັນຊີໃນການຕັ້ງຄ່າ🙏🏻 ພົບປັນຫາຕິດຕໍ່ WhatsApp: 2091415737 | Email: alex889100@gmail.com"
+            },
+            th: {
+                subtitle: "แปลภาษาลาวเป็นโอเกะ",
+                inputLang: "ภาษาลาว (LAO SCRIPT)",
+                outputLang: "ภาษาโอเกะ (O-GAE PHONETICS)",
+                placeholderInput: "ป้อนข้อความภาษาลาวที่นี่...",
+                placeholderOutput: "ผลลัพธ์ภาษาโอเกะจะแสดงที่นี่...",
+                btnPaste: "วาง",
+                btnClear: "ล้าง",
+                btnFav: "ชื่นชอบ",
+                btnCopy: "คัดลอก",
+                examples: "ตัวอย่าง:",
+                historyTitle: "ประวัติการแปลง",
+                favTitle: "รายการโปรด",
+                guideTitle: "คู่มือการอ่าน",
+                navTranslator: "แปลภาษา",
+                historyDesc: "รายการแปลล่าสุดที่บันทึกไว้ในเครื่อง",
+                favDesc: "คำที่ติดดาวไว้เพื่อเรียกดูเร็ว",
+                clearHistory: "ลบประวัติทั้งหมด",
+                noHistory: "ไม่มีประวัติการแปลง",
+                noFav: "ยังไม่มีรายการโปรด",
+                modalTitle: "ตั้งค่าระบบ",
+                themeLbl: "ธีมแสดงผล",
+                themeDesc: "ปรับเปลี่ยนสีหน้าจอแอป",
+                blurLbl: "ความเบลอกระจก (Glass Blur)",
+                blurDesc: "ปรับความเบลอแบบ Liquid Glass",
+                opacityLbl: "ความใสของกระจก (Opacity)",
+                opacityDesc: "ปรับความโปร่งใสให้เห็นฉากหลัง",
+                spaceLbl: "รูปแบบการเว้นพยางค์",
+                spaceDesc: "การใส่ช่องว่างระหว่างพยางค์",
+                privacyTitle: "นโยบายความเป็นส่วนตัว (Privacy Policy)",
+                privacyDesc: "เว็บไซต์นี้ไม่มีการเก็บรวบรวมหรือร้องขอข้อมูลส่วนตัวใดๆ ของผู้ใช้งานอย่างเด็ดขาด (No Personal Data Collected).",
+                contactTitle: "ติดต่อทีมงาน & แจ้งปัญหา (Contact Support)",
+                addressTitle: "ที่อยู่:",
+                addressDesc: "แขวงจำปาสัก, เมืองประทุมพร, บ้านบังเลียง",
+                donateTitle: "สนับสนุนผู้พัฒนา (Donate)",
+                donateBank: "ธนาคารการค้าต่างประเทศลาว (BCEL)",
+                btnCopyAcc: "คัดลอกเลขบัญชี",
+                toastCopiedAcc: "คัดลอกเลขบัญชีแล้ว!",
+                appVersion: "เวอร์ชัน: 1.3",
+                appUpdated: "อัปเดตล่าสุด: 9/11/2026",
+                btnOk: "ตกลง / OK",
+                toastCopied: "คัดลอกข้อความแล้ว!",
+                toastCleared: "ล้างข้อความแล้ว!",
+                toastPasteFallback: "โปรดกดค้างเพื่อวางข้อความ",
+                charUnit: "ตัวอักษร",
+                guideHeading: "หลักเกณฑ์การถอดพยัญชนะและสระภาษาลาวเป็นตัวอักษรโรมัน (Lao O-Gae Romanization Standard):",
+                alertBannerText: "ນະໂຍບາຍແລະຄວາມປອດໄພຂອງຜູ້ໃຊ້ງານທາງເວັບຈະບໍ່ມີການຂໍຂໍ້ມູນສ່ວນຕົວໃດໆທັງນັ້ນຫລືຮຽກເກັບເງິນໃນບັນຊີຂອງທ່ານ(ທ່ານສາມາດບໍລິຈາກຄ່າກະເຟໃຫ້ໄດ້ເລກບັນຊີໃນການຕັ້ງຄ່າ🙏🏻 ພົບປັນຫາຕິດຕໍ່ WhatsApp: 2091415737 | Email: alex889100@gmail.com"
+            },
+            en: {
+                subtitle: "Lao to O-Gae Romanization",
+                inputLang: "Lao Script",
+                outputLang: "O-Gae Phonetics",
+                placeholderInput: "Enter Lao text here...",
+                placeholderOutput: "Romanized O-Gae output will appear here...",
+                btnPaste: "Paste",
+                btnClear: "Clear",
+                btnFav: "Favorite",
+                btnCopy: "Copy",
+                examples: "Examples:",
+                historyTitle: "History",
+                favTitle: "Favorites",
+                guideTitle: "Guide",
+                navTranslator: "Translate",
+                historyDesc: "Recent translations saved locally",
+                favDesc: "Starred items for quick access",
+                clearHistory: "Clear History",
+                noHistory: "No translation history",
+                noFav: "No favorites yet",
+                modalTitle: "Settings",
+                themeLbl: "App Theme",
+                themeDesc: "Customize display theme",
+                blurLbl: "Glass Blur",
+                blurDesc: "Adjust backdrop blur effect",
+                opacityLbl: "Glass Opacity",
+                opacityDesc: "Adjust glass translucency",
+                spaceLbl: "Syllable Spacing",
+                spaceDesc: "Adjust spacing between phonetics",
+                privacyTitle: "Privacy Policy",
+                privacyDesc: "This website does not collect, request, or store any personal data from users.",
+                contactTitle: "Contact Team & Support",
+                addressTitle: "Address:",
+                addressDesc: "Champasak Province, Pathoomphone District, BangLiang Village",
+                donateTitle: "Donate & Support Creator",
+                donateBank: "BCEL Bank (Laos)",
+                btnCopyAcc: "Copy Account Number",
+                toastCopiedAcc: "Account number copied!",
+                appVersion: "Version: 1.3",
+                appUpdated: "Last Updated: 9/11/2026",
+                btnOk: "OK",
+                toastCopied: "Copied to clipboard!",
+                toastCleared: "Text cleared!",
+                toastPasteFallback: "Long press to paste text",
+                charUnit: "chars",
+                guideHeading: "Standard Lao Romanization & Phonetic Transliteration Rules:",
+                alertBannerText: "ນະໂຍບາຍແລະຄວາມປອດໄພຂອງຜູ້ໃຊ້ງານທາງເວັບຈະບໍ່ມີການຂໍຂໍ້ມູນສ່ວນຕົວໃດໆທັງນັ້ນຫລືຮຽກເກັບເງິນໃນບັນຊີຂອງທ່ານ(ທ່ານສາມາດບໍລິຈາກຄ່າກະເຟໃຫ້ໄດ້ເລກບັນຊີໃນການຕັ້ງຄ່າ🙏🏻 ພົບປັນຫາຕິດຕໍ່ WhatsApp: 2091415737 | Email: alex889100@gmail.com"
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadLocalStorage();
+            applyTheme(appState.theme);
+            applyGlassBlur(appState.glassBlur);
+            applyGlassOpacity(appState.glassOpacity);
+            updateUIStrings();
+            renderHistory();
+            renderFavorites();
+            renderLangModalOptions();
+            switchTab(appState.activeTab || 'translator');
+
+            const navContainer = document.getElementById('nav-dock-container');
+            if (window.ResizeObserver && navContainer) {
+                new ResizeObserver(() => {
+                    requestAnimationFrame(() => updateNavPillPosition(appState.activeTab));
+                }).observe(navContainer);
+            } else {
+                window.addEventListener('resize', () => {
+                    requestAnimationFrame(() => updateNavPillPosition(appState.activeTab));
+                });
+            }
+        });
+
+        function switchTab(tabName) {
+            appState.activeTab = tabName;
+            
+            const pages = ['translator', 'history', 'favorites', 'guide'];
+            pages.forEach(p => {
+                const el = document.getElementById(`page-${p}`);
+                if (el) {
+                    if (p === tabName) {
+                        el.classList.remove('hidden');
+                        el.classList.add('page-fade-in');
+                    } else {
+                        el.classList.add('hidden');
+                        el.classList.remove('page-fade-in');
+                    }
+                }
+            });
+
+            const navButtons = ['translator', 'history', 'favorites', 'guide'];
+            navButtons.forEach(btnKey => {
+                const btn = document.getElementById(`nav-btn-${btnKey}`);
+                if (btn) {
+                    if (btnKey === tabName) {
+                        btn.className = "relative z-10 flex-1 py-2 px-1 text-center text-xs font-bold text-slate-900 dark:text-white flex items-center justify-center gap-1.5 nav-tab-active m3-btn border-none";
+                    } else {
+                        btn.className = "relative z-10 flex-1 py-2 px-1 text-center text-xs font-bold text-slate-600 dark:text-slate-300 flex items-center justify-center gap-1.5 nav-tab-inactive m3-btn border-none";
+                    }
+                }
+            });
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    updateNavPillPosition(tabName);
+                });
+            });
+        }
+
+        function updateNavPillPosition(tabName) {
+            const activeBtn = document.getElementById(`nav-btn-${tabName}`);
+            const pill = document.getElementById('nav-active-pill');
+            const container = document.getElementById('nav-dock-container');
+
+            if (activeBtn && pill && container) {
+                const btnRect = activeBtn.getBoundingClientRect();
+                const containerRect = container.getBoundingClientRect();
+                const leftPos = btnRect.left - containerRect.left;
+                const width = btnRect.width;
+
+                pill.style.transform = `translate3d(${leftPos}px, 0, 0)`;
+                pill.style.width = `${width}px`;
+            }
+        }
+
+        function applyTheme(themeVal) {
+            appState.theme = themeVal;
+            const htmlEl = document.documentElement;
+            const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDark = themeVal === 'dark' || (themeVal === 'system' && isSystemDark);
+
+            if (isDark) {
+                htmlEl.classList.add('dark');
+                htmlEl.classList.remove('light');
+            } else {
+                htmlEl.classList.remove('dark');
+                htmlEl.classList.add('light');
+            }
+
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeIcon) {
+                themeIcon.className = isDark ? 'fa-solid fa-sun text-amber-400 text-xs' : 'fa-solid fa-moon text-slate-700 dark:text-slate-200 text-xs';
+            }
+
+            const bLight = document.getElementById('theme-btn-light');
+            const bDark = document.getElementById('theme-btn-dark');
+            const bSystem = document.getElementById('theme-btn-system');
+            const activeStyle = "bg-indigo-600 text-white shadow-sm";
+            const inactiveStyle = "text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400";
+
+            if (bLight) bLight.className = `m3-btn text-[11px] px-2.5 py-1 rounded-full font-bold transition-all ${themeVal === 'light' ? activeStyle : inactiveStyle}`;
+            if (bDark) bDark.className = `m3-btn text-[11px] px-2.5 py-1 rounded-full font-bold transition-all ${themeVal === 'dark' ? activeStyle : inactiveStyle}`;
+            if (bSystem) bSystem.className = `m3-btn text-[11px] px-2.5 py-1 rounded-full font-bold transition-all ${themeVal === 'system' ? activeStyle : inactiveStyle}`;
+
+            saveLocalStorage();
+        }
+
+        function toggleTheme() {
+            const isDarkNow = document.documentElement.classList.contains('dark');
+            applyTheme(isDarkNow ? 'light' : 'dark');
+        }
+
+        function applyGlassBlur(val) {
+            appState.glassBlur = parseInt(val, 10);
+            document.documentElement.style.setProperty('--glass-blur', `${appState.glassBlur}px`);
+            const txt = document.getElementById('blur-val-txt');
+            const range = document.getElementById('glass-blur-range');
+            if (txt) txt.innerText = `${appState.glassBlur}px`;
+            if (range) range.value = appState.glassBlur;
+            saveLocalStorage();
+        }
+
+        function onGlassBlurChange(val) {
+            applyGlassBlur(val);
+        }
+
+        function applyGlassOpacity(val) {
+            appState.glassOpacity = parseInt(val, 10);
+            const opacityDec = appState.glassOpacity / 100;
+            document.documentElement.style.setProperty('--glass-opacity-light', opacityDec * 0.9);
+            document.documentElement.style.setProperty('--glass-opacity-dark', opacityDec * 1.1);
+            const txt = document.getElementById('opacity-val-txt');
+            const range = document.getElementById('glass-opacity-range');
+            if (txt) txt.innerText = `${appState.glassOpacity}%`;
+            if (range) range.value = appState.glassOpacity;
+            saveLocalStorage();
+        }
+
+        function onGlassOpacityChange(val) {
+            applyGlassOpacity(val);
+        }
+
+        function loadLocalStorage() {
+            try {
+                const savedState = localStorage.getItem('lao_ogae_app_state');
+                if (savedState) {
+                    const parsed = JSON.parse(savedState);
+                    appState.theme = parsed.theme || 'system';
+                    appState.glassBlur = parsed.glassBlur !== undefined ? parsed.glassBlur : 2; // Default 2px
+                    appState.glassOpacity = parsed.glassOpacity !== undefined ? parsed.glassOpacity : 22;
+                    appState.language = parsed.language || 'lo';
+                    appState.styleOption = parsed.styleOption || 'capitalize';
+                    appState.spacingOption = parsed.spacingOption || 'space';
+                    appState.history = parsed.history || [];
+                    appState.favorites = parsed.favorites || [];
+                }
+            } catch (e) {
+                console.warn('LocalStorage error:', e);
+            }
+        }
+
+        function saveLocalStorage() {
+            try {
+                localStorage.setItem('lao_ogae_app_state', JSON.stringify(appState));
+            } catch (e) {
+                console.warn('LocalStorage save error:', e);
+            }
+        }
+
+        function onInputTextChange() {
+            const inputVal = document.getElementById('input-text').value;
+            const t = I18N[appState.language] || I18N.lo;
+
+            document.getElementById('char-count').innerText = `${inputVal.length} ${t.charUnit}`;
+
+            if (!inputVal.trim()) {
+                document.getElementById('output-container').innerHTML = `<span class="text-slate-400 dark:text-slate-500 font-normal text-sm italic" id="output-placeholder">${t.placeholderOutput}</span>`;
+                updateFavButtonState(false);
+                return;
+            }
+
+            let result = transliterateLaoRules(inputVal);
+
+            if (appState.spacingOption === 'hyphen') {
+                result = result.replace(/\s+/g, '-');
+            } else if (appState.spacingOption === 'join') {
+                result = result.replace(/\s+/g, '');
+            }
+
+            if (appState.styleOption === 'capitalize') {
+                result = result.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+            } else {
+                result = result.toLowerCase();
+            }
+
+            document.getElementById('output-container').innerText = result;
+
+            const isFav = appState.favorites.some(item => item.input === inputVal.trim());
+            updateFavButtonState(isFav);
+
+            if (historyDebounceTimer) clearTimeout(historyDebounceTimer);
+            if (inputVal.trim().length >= 2) {
+                historyDebounceTimer = setTimeout(() => {
+                    saveToHistoryDebounced(inputVal.trim(), result);
+                }, 1200);
+            }
+        }
+
+        function setStyleOption(opt) {
+            appState.styleOption = opt;
+            const btnCap = document.getElementById('opt-cap');
+            const btnLow = document.getElementById('opt-low');
+
+            if (opt === 'capitalize') {
+                btnCap.className = "m3-btn text-[11px] px-3 py-1 rounded-full font-bold bg-indigo-600 text-white shadow-sm";
+                btnLow.className = "m3-btn text-[11px] px-3 py-1 rounded-full font-bold text-slate-500 dark:text-slate-400";
+            } else {
+                btnLow.className = "m3-btn text-[11px] px-3 py-1 rounded-full font-bold bg-indigo-600 text-white shadow-sm";
+                btnCap.className = "m3-btn text-[11px] px-3 py-1 rounded-full font-bold text-slate-500 dark:text-slate-400";
+            }
+            saveLocalStorage();
+            onInputTextChange();
+        }
+
+        function setExample(text) {
+            document.getElementById('input-text').value = text;
+            onInputTextChange();
+            switchTab('translator');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function clearInput() {
+            document.getElementById('input-text').value = '';
+            onInputTextChange();
+            const t = I18N[appState.language] || I18N.lo;
+            showToast(t.toastCleared);
+        }
+
+        async function pasteInput() {
+            try {
+                const text = await navigator.clipboard.readText();
+                if (text) {
+                    document.getElementById('input-text').value = text;
+                    onInputTextChange();
+                }
+            } catch (err) {
+                const t = I18N[appState.language] || I18N.lo;
+                showToast(t.toastPasteFallback);
+            }
+        }
+
+        function copyOutput() {
+            const outText = document.getElementById('output-container').innerText;
+            const t = I18N[appState.language] || I18N.lo;
+
+            if (outText && outText !== t.placeholderOutput) {
+                const tempTextArea = document.createElement("textarea");
+                tempTextArea.value = outText;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempTextArea);
+                showToast(t.toastCopied);
+            }
+        }
+
+        function copyDonateAccount() {
+            const accNum = "0451251538943";
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = accNum;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+
+            const t = I18N[appState.language] || I18N.lo;
+            showToast(t.toastCopiedAcc || 'ຄັດລອກເລກບັນຊີແລ້ວ!');
+        }
+
+        function speakText(type) {
+            const text = type === 'input' 
+                ? document.getElementById('input-text').value 
+                : document.getElementById('output-container').innerText;
+            
+            if (!text) return;
+
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = type === 'input' ? 'lo-LA' : 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function saveToHistoryDebounced(input, output) {
+            if (!input || !output) return;
+
+            if (appState.history.length > 0) {
+                const topItem = appState.history[0];
+                if (topItem.input === input) return;
+
+                if (Date.now() - topItem.timestamp < 30000 && (input.startsWith(topItem.input) || topItem.input.startsWith(input))) {
+                    appState.history[0] = { input, output, timestamp: Date.now() };
+                    saveLocalStorage();
+                    renderHistory();
+                    return;
+                }
+            }
+
+            const existingIdx = appState.history.findIndex(h => h.input === input);
+            if (existingIdx !== -1) {
+                appState.history.splice(existingIdx, 1);
+            }
+
+            appState.history.unshift({ input, output, timestamp: Date.now() });
+            if (appState.history.length > 40) appState.history.pop();
+
+            saveLocalStorage();
+            renderHistory();
+        }
+
+        function clearHistory() {
+            appState.history = [];
+            saveLocalStorage();
+            renderHistory();
+        }
+
+        function toggleFavoriteCurrent() {
+            const inputVal = document.getElementById('input-text').value.trim();
+            const outText = document.getElementById('output-container').innerText;
+            const t = I18N[appState.language] || I18N.lo;
+
+            if (!inputVal || outText === t.placeholderOutput) return;
+
+            const existingIdx = appState.favorites.findIndex(f => f.input === inputVal);
+            if (existingIdx !== -1) {
+                appState.favorites.splice(existingIdx, 1);
+                updateFavButtonState(false);
+            } else {
+                appState.favorites.unshift({ input: inputVal, output: outText, timestamp: Date.now() });
+                updateFavButtonState(true);
+            }
+
+            saveLocalStorage();
+            renderFavorites();
+        }
+
+        function updateFavButtonState(isFav) {
+            const btnFav = document.getElementById('btn-fav');
+            if (!btnFav) return;
+
+            if (isFav) {
+                btnFav.className = "m3-btn text-xs px-4 py-2 rounded-full bg-amber-500/20 text-amber-500 font-bold flex items-center gap-1.5 shadow-sm border border-amber-500/30";
+                btnFav.querySelector('i').className = "fa-solid fa-star text-xs";
+            } else {
+                btnFav.className = "m3-btn text-xs px-4 py-2 rounded-full liquid-pill text-slate-400 font-semibold flex items-center gap-1.5 shadow-sm";
+                btnFav.querySelector('i').className = "fa-regular fa-star text-xs";
+            }
+        }
+
+        function renderHistory() {
+            const listEl = document.getElementById('history-list');
+            const t = I18N[appState.language] || I18N.lo;
+            if (!listEl) return;
+
+            if (appState.history.length === 0) {
+                listEl.innerHTML = `<div class="text-center py-6 text-slate-400 text-xs">${t.noHistory}</div>`;
+                return;
+            }
+
+            listEl.innerHTML = appState.history.map((item, idx) => `
+                <div onclick="setExample('${escapeHtml(item.input)}')" class="p-3 rounded-2xl liquid-pill hover:border-indigo-500/50 cursor-pointer flex items-center justify-between group m3-btn">
+                    <div class="space-y-0.5 overflow-hidden pr-2">
+                        <p class="font-bold text-slate-800 dark:text-slate-100 text-xs truncate">${escapeHtml(item.input)}</p>
+                        <p class="text-indigo-600 dark:text-indigo-400 text-[11px] font-bold truncate">${escapeHtml(item.output)}</p>
+                    </div>
+                    <button onclick="event.stopPropagation(); deleteHistoryItem(${idx})" class="w-7 h-7 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-500/10 flex items-center justify-center m3-btn">
+                        <i class="fa-solid fa-xmark text-xs"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function deleteHistoryItem(idx) {
+            appState.history.splice(idx, 1);
+            saveLocalStorage();
+            renderHistory();
+        }
+
+        function renderFavorites() {
+            const listEl = document.getElementById('favorites-list');
+            const t = I18N[appState.language] || I18N.lo;
+            if (!listEl) return;
+
+            if (appState.favorites.length === 0) {
+                listEl.innerHTML = `<div class="text-center py-6 text-slate-400 text-xs">${t.noFav}</div>`;
+                return;
+            }
+
+            listEl.innerHTML = appState.favorites.map((item, idx) => `
+                <div onclick="setExample('${escapeHtml(item.input)}')" class="p-3 rounded-2xl liquid-pill hover:border-indigo-500/50 cursor-pointer flex items-center justify-between group m3-btn">
+                    <div class="space-y-0.5 overflow-hidden pr-2">
+                        <p class="font-bold text-slate-800 dark:text-slate-100 text-xs truncate">${escapeHtml(item.input)}</p>
+                        <p class="text-amber-600 dark:text-amber-400 text-[11px] font-bold truncate">${escapeHtml(item.output)}</p>
+                    </div>
+                    <button onclick="event.stopPropagation(); deleteFavoriteItem(${idx})" class="w-7 h-7 rounded-full text-amber-500 hover:bg-amber-500/10 flex items-center justify-center m3-btn">
+                        <i class="fa-solid fa-star text-xs"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function deleteFavoriteItem(idx) {
+            appState.favorites.splice(idx, 1);
+            saveLocalStorage();
+            renderFavorites();
+            onInputTextChange();
+        }
+
+        function applySpacingSetting(spacingVal) {
+            appState.spacingOption = spacingVal;
+            const bSpc = document.getElementById('spc-btn-space');
+            const bHyp = document.getElementById('spc-btn-hyphen');
+            const bJoi = document.getElementById('spc-btn-join');
+
+            const activeStyle = "bg-indigo-600 text-white shadow-sm";
+            const inactiveStyle = "text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400";
+
+            if (bSpc) bSpc.className = `m3-btn text-[10px] px-2 py-1 rounded-full font-bold transition-all ${spacingVal === 'space' ? activeStyle : inactiveStyle}`;
+            if (bHyp) bHyp.className = `m3-btn text-[10px] px-2 py-1 rounded-full font-bold transition-all ${spacingVal === 'hyphen' ? activeStyle : inactiveStyle}`;
+            if (bJoi) bJoi.className = `m3-btn text-[10px] px-2 py-1 rounded-full font-bold transition-all ${spacingVal === 'join' ? activeStyle : inactiveStyle}`;
+
+            saveLocalStorage();
+            onInputTextChange();
+        }
+
+        function openLangModal() {
+            const modal = document.getElementById('lang-modal');
+            const card = document.getElementById('lang-modal-card');
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            });
+        }
+
+        function closeLangModal() {
+            const modal = document.getElementById('lang-modal');
+            const card = document.getElementById('lang-modal-card');
+            modal.classList.add('opacity-0');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function selectLanguageOption(code) {
+            changeLanguage(code);
+            closeLangModal();
+        }
+
+        function renderLangModalOptions() {
+            const container = document.getElementById('lang-option-list');
+            if (!container) return;
+
+            container.innerHTML = LANGUAGES.map(lang => {
+                const isSelected = lang.code === appState.language;
+                return `
+                    <button onclick="selectLanguageOption('${lang.code}')" class="w-full flex items-center justify-between p-3 rounded-2xl ${isSelected ? 'bg-indigo-600 text-white font-bold shadow-md shadow-indigo-500/25' : 'liquid-pill text-slate-800 dark:text-slate-200 hover:border-indigo-500/40'} m3-btn text-xs">
+                        <div class="flex items-center gap-2.5">
+                            <span class="text-base">${lang.flag}</span>
+                            <span>${lang.name}</span>
+                        </div>
+                        ${isSelected ? '<i class="fa-solid fa-circle-check text-white text-sm"></i>' : ''}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function changeLanguage(langKey) {
+            appState.language = langKey;
+            saveLocalStorage();
+            updateUIStrings();
+            renderHistory();
+            renderFavorites();
+            renderLangModalOptions();
+            updateNavPillPosition(appState.activeTab);
+        }
+
+        function updateUIStrings() {
+            const t = I18N[appState.language] || I18N.lo;
+
+            const currLangObj = LANGUAGES.find(l => l.code === appState.language) || LANGUAGES[0];
+            document.getElementById('current-lang-flag').innerText = currLangObj.flag;
+            document.getElementById('current-lang-name').innerText = currLangObj.name;
+
+            document.getElementById('ui-subtitle').innerText = t.subtitle;
+            document.getElementById('lbl-input-lang').innerText = t.inputLang;
+            document.getElementById('lbl-output-lang').innerText = t.outputLang;
+            document.getElementById('input-text').placeholder = t.placeholderInput;
+            document.getElementById('btn-paste').innerText = t.btnPaste;
+            document.getElementById('btn-clear').innerText = t.btnClear;
+            document.getElementById('lbl-fav').innerText = t.btnFav;
+            document.getElementById('btn-copy').innerText = t.btnCopy;
+            document.getElementById('lbl-examples').innerText = t.examples;
+            
+            document.getElementById('tab-title-translator').innerText = t.navTranslator;
+            document.getElementById('tab-title-history').innerText = t.historyTitle;
+            document.getElementById('tab-title-favorites').innerText = t.favTitle;
+            document.getElementById('tab-title-guide').innerText = t.guideTitle;
+            
+            document.getElementById('lbl-history-desc').innerText = t.historyDesc;
+            document.getElementById('lbl-fav-desc').innerText = t.favDesc;
+            document.getElementById('btn-clear-history').innerText = t.clearHistory;
+            document.getElementById('lbl-guide-heading').innerText = t.guideHeading;
+            document.getElementById('alert-banner-txt').innerText = t.alertBannerText;
+
+            document.getElementById('modal-title-settings').innerHTML = `<i class="fa-solid fa-gear text-indigo-500"></i> ${t.modalTitle}`;
+            document.getElementById('setting-theme-lbl').innerText = t.themeLbl;
+            document.getElementById('setting-theme-desc').innerText = t.themeDesc;
+            document.getElementById('setting-blur-lbl').innerText = t.blurLbl;
+            document.getElementById('setting-blur-desc').innerText = t.blurDesc;
+            document.getElementById('setting-opacity-lbl').innerText = t.opacityLbl;
+            document.getElementById('setting-opacity-desc').innerText = t.opacityDesc;
+            document.getElementById('setting-space-lbl').innerText = t.spaceLbl;
+            document.getElementById('setting-space-desc').innerText = t.spaceDesc;
+            
+            document.getElementById('lbl-privacy-title').innerHTML = `<i class="fa-solid fa-shield-halved"></i> ${t.privacyTitle}`;
+            document.getElementById('lbl-privacy-desc').innerText = t.privacyDesc;
+            document.getElementById('lbl-contact-title').innerHTML = `<i class="fa-solid fa-headset"></i> ${t.contactTitle}`;
+            document.getElementById('lbl-address-title').innerText = t.addressTitle;
+            document.getElementById('lbl-address-desc').innerText = t.addressDesc;
+            
+            document.getElementById('lbl-donate-title').innerHTML = `<i class="fa-solid fa-heart text-red-500"></i> ${t.donateTitle}`;
+            document.getElementById('lbl-donate-bank').innerText = t.donateBank;
+            document.getElementById('btn-copy-acc').innerText = t.btnCopyAcc;
+
+            document.getElementById('lbl-app-version').innerText = t.appVersion;
+            document.getElementById('lbl-app-updated').innerText = t.appUpdated;
+            document.getElementById('btn-modal-ok').innerText = t.btnOk;
+
+            applySpacingSetting(appState.spacingOption);
+            onInputTextChange();
+        }
+
+        function openSettings() {
+            const modal = document.getElementById('settings-modal');
+            const card = document.getElementById('settings-modal-card');
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            });
+        }
+
+        function closeSettings() {
+            const modal = document.getElementById('settings-modal');
+            const card = document.getElementById('settings-modal-card');
+            modal.classList.add('opacity-0');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+            }, 2500);
+        }
+
+        function escapeHtml(str) {
+            return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+        }
+    </script>
+</body>
+</html>
